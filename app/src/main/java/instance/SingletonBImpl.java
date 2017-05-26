@@ -30,9 +30,11 @@ public class SingletonBImpl extends ISingletonB.Stub {
                 INSTANCE = new SingletonBImpl();
             }
         } else {//主线程
-            Context context = MyApplication.getContext();
-            Intent intent = new Intent(context, ServiceB.class);
-            context.bindService(intent, new ServiceConnectionImpl(), Context.BIND_AUTO_CREATE);
+            if (null == INSTANCE){
+                Context context = MyApplication.getContext();
+                Intent intent = new Intent(context, ServiceB.class);
+                context.bindService(intent, new ServiceConnectionImpl(), Context.BIND_AUTO_CREATE);
+            }
         }
 
         return INSTANCE;

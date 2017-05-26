@@ -32,9 +32,11 @@ public class SingletonMainImpl extends ISingletonMain.Stub {
                 INSTANCE = new SingletonMainImpl();
             }
         } else {//其它线程
-            Context context = MyApplication.getContext();
-            Intent intent = new Intent(context, MainService.class);
-            context.bindService(intent, new ServiceConnectionImpl(), Context.BIND_AUTO_CREATE);
+            if (null == INSTANCE){
+                Context context = MyApplication.getContext();
+                Intent intent = new Intent(context, MainService.class);
+                context.bindService(intent, new ServiceConnectionImpl(), Context.BIND_AUTO_CREATE);
+            }
         }
 
         return INSTANCE;
