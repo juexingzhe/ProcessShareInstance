@@ -2,6 +2,8 @@ package Utils;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Process;
 import android.widget.Toast;
 
@@ -41,8 +43,14 @@ public class Utils {
 
     }
 
-    public static void showToast(String msg){
-        Toast.makeText(MyApplication.getContext(), msg, Toast.LENGTH_LONG).show();
+    public static void showToast(final String msg){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MyApplication.getContext(), msg, Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
 

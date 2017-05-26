@@ -6,4 +6,6 @@ package com.example.juexingzhe.processshareinstance;
 interface ISingletonB {
 
     void increment(String currentPorcessName);
+
+    int getCount();
 }

@@ -16,19 +16,28 @@
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/b_text_count"
+        android:id="@+id/b_text_count_main"
         android:layout_below="@id/b_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/count_0"/>
+        android:text="@string/count_main"/>
+
+    <TextView
+        android:id="@+id/b_text_count_b"
+        android:layout_below="@id/b_text_count_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/count_b"/>
 
     <Button
         android:id="@+id/b_start_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/b_text_count"
+        android:layout_below="@id/b_text_count_b"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/start_processmain"/>

@@ -26,9 +26,11 @@ public class InstanceFactory implements Parcelable {
 
         switch (processId) {
             case PROCESS_MAIN:
+                SingletonMainImpl.COUNT = in.readInt();
                 SingletonMainImpl.INSTANCE = ISingletonMain.Stub.asInterface(in.readStrongBinder());
                 break;
             case PROCESS_B:
+                SingletonBImpl.COUNT = in.readInt();
                 SingletonBImpl.INSTANCE = ISingletonB.Stub.asInterface(in.readStrongBinder());
                 break;
         }
@@ -57,9 +59,11 @@ public class InstanceFactory implements Parcelable {
 
         if (Utils.isMainProcess()) {
             dest.writeInt(PROCESS_MAIN);
+            dest.writeInt(SingletonMainImpl.COUNT);
             dest.writeStrongInterface(SingletonMainImpl.getInstance());
         } else if (Utils.isBProcess()) {
             dest.writeInt(PROCESS_B);
+            dest.writeInt(SingletonBImpl.COUNT);
             dest.writeStrongInterface(SingletonBImpl.getInstance());
         }
 

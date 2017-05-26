@@ -21,7 +21,7 @@ public class SingletonMainImpl extends ISingletonMain.Stub {
 
     public static ISingletonMain INSTANCE;
 
-    private static int count = 0;
+    public static int COUNT = 0;
 
     private SingletonMainImpl() {
     }
@@ -43,13 +43,13 @@ public class SingletonMainImpl extends ISingletonMain.Stub {
 
     @Override
     public void increment(String currentPorcessName) throws RemoteException {
-        count++;
-        StringBuilder stringBuilder = new StringBuilder("线程：" + currentPorcessName + "调用" + Utils.currentProcessName() + "的方法increment");
-        stringBuilder.append("\n").append("线程" + Utils.currentProcessName() + "count = " + count);
+        COUNT++;
+        StringBuilder stringBuilder = new StringBuilder("进程：" + currentPorcessName + "调用" + Utils.currentProcessName() + "的方法increment");
         Utils.showToast(stringBuilder.toString());
     }
 
-    public static int getCount() {
-        return count;
+    @Override
+    public int getCount() {
+        return COUNT;
     }
 }

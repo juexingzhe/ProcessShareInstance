@@ -5,4 +5,5 @@ package com.example.juexingzhe.processshareinstance;
 
 interface ISingletonMain {
     void increment(String currentPorcessName);
+    int getCount();
 }
